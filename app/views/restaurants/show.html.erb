@@ -1,0 +1,30 @@
+<div class="container my-5">
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h2 class="card-title text-primary text-center"><strong><%= @restaurant.name %></strong></h2>
+      <p class="text-muted text-center"><%= @restaurant.address %></p>
+      <p class="text-muted text-center"><%= @restaurant.phone_number %></p>
+      <p class="text-center"><strong>Category:</strong> <%= @restaurant.category.capitalize %></p>
+
+      <div class="text-center mt-4">
+        <%= link_to "Back to restaurants", restaurants_path, class: "btn btn-outline-primary" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-5">
+    <h3 class="text-secondary"><strong>Reviews</strong></h3>
+    <ul class="list-group mt-3">
+      <% @restaurant.reviews.each do |review| %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <span><%= review.rating %> stars</span>
+          <span class="text-muted"><%= review.content %></span>
+        </li>
+      <% end %>
+    </ul>
+
+    <div class="text-center mt-4">
+      <%= link_to "Add Review", new_restaurant_review_path(@restaurant), class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
